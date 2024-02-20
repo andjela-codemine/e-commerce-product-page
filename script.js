@@ -57,7 +57,9 @@ function openModalForBigScreen() {
     modalOverlay.addEventListener('click', () => closeModal());
 
     function closeModal() {
-        modal.removeChild(galleryCopy);
+        if (galleryCopy && galleryCopy.parentNode === modal) {
+            modal.removeChild(galleryCopy);
+        }
         modal.style.display = 'none';
         modalOverlay.style.display = 'none';
         body.style.overflow = 'auto';
